@@ -1,0 +1,157 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+Contact their authors BEFORE contacting forge
+
+// I let you down. Sorry :(
+
+Time: 3/8/21 11:46 PM
+Description: Unexpected error
+
+org.spongepowered.asm.mixin.injection.callback.CancellationException: The call func_78764_a is not cancellable.
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfo.cancel(CallbackInfo.java:101)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.handler$attackEntity$zzo000(PlayerControllerMP.java:738)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.func_78764_a(PlayerControllerMP.java)
+	at net.minecraft.client.Minecraft.func_147116_af(Minecraft.java:1511)
+	at net.minecraft.client.Minecraft.redirect$onClickMouse$zeb000(Minecraft.java:3977)
+	at net.minecraft.client.Minecraft.func_184117_aA(Minecraft.java:2249)
+	at net.minecraft.client.Minecraft.func_184118_az(Minecraft.java:2020)
+	at net.minecraft.client.Minecraft.func_71407_l(Minecraft.java:1808)
+	at net.minecraft.client.Minecraft.func_71411_J(Minecraft.java:1098)
+	at net.minecraft.client.Minecraft.func_99999_d(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.multimc.onesix.OneSixLauncher.launchWithMainClass(OneSixLauncher.java:196)
+	at org.multimc.onesix.OneSixLauncher.launch(OneSixLauncher.java:231)
+	at org.multimc.EntryPoint.listen(EntryPoint.java:143)
+	at org.multimc.EntryPoint.main(EntryPoint.java:34)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfo.cancel(CallbackInfo.java:101)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.handler$attackEntity$zzo000(PlayerControllerMP.java:738)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.func_78764_a(PlayerControllerMP.java)
+	at net.minecraft.client.Minecraft.func_147116_af(Minecraft.java:1511)
+	at net.minecraft.client.Minecraft.redirect$onClickMouse$zeb000(Minecraft.java:3977)
+	at net.minecraft.client.Minecraft.func_184117_aA(Minecraft.java:2249)
+	at net.minecraft.client.Minecraft.func_184118_az(Minecraft.java:2020)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 3 total; [EntityPlayerSP['XxJooseeDARKNET'/3580, l='MpServer', x=10.46, y=72.00, z=0.05], EntityOtherPlayerMP['GiovannyCool1'/3701, l='MpServer', x=10.64, y=84.55, z=0.34], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=7.51, y=72.61, z=-0.51]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (7,72,-1), Chunk: (at 7,4,15 in 0,-1; contains blocks 0,0,-16 to 15,255,-1), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Level time: 20361072 game time, 6000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 31 total; [EntityOtherPlayerMP['GiovannyCool1'/3701, l='MpServer', x=10.64, y=84.55, z=0.34], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=-21.09, y=72.00, z=-2.34], EntityArmorStand['§e2. §bmaskinaa§7 - §e1,400'/3622, l='MpServer', x=-40.50, y=74.44, z=3.50], EntityArmorStand['§e3. §asymphy§7 - §e1,382'/3624, l='MpServer', x=-40.50, y=74.06, z=3.50], EntityArmorStand['§e4. §bredsy§7 - §e1,132'/3626, l='MpServer', x=-40.50, y=73.69, z=3.50], EntityArmorStand['§e5. §6sentuh§7 - §e1,117'/3628, l='MpServer', x=-40.50, y=73.31, z=3.50], EntityArmorStand['§e6. §afentuh§7 - §e965'/3630, l='MpServer', x=-40.50, y=72.94, z=3.50], EntityArmorStand['§e7. §bedatingisBALD§7 - §e929'/3632, l='MpServer', x=-40.50, y=72.56, z=3.50], EntityPlayerSP['XxJooseeDARKNET'/3580, l='MpServer', x=8.50, y=65.00, z=8.50], EntityArmorStand['§e8. §6tikanga§7 - §e896'/3634, l='MpServer', x=-40.50, y=72.22, z=3.50], EntityPlayerSP['XxJooseeDARKNET'/3580, l='MpServer', x=10.46, y=72.00, z=0.05], EntityArmorStand['§e9. §aJunweiVsDpresion§7 - §e861'/3636, l='MpServer', x=-40.50, y=71.84, z=3.50], EntityArmorStand['§e10. §7ilyUnhappyy§7 - §e765'/3638, l='MpServer', x=-40.50, y=71.47, z=3.50], EntityArmorStand['§e§l149,536. §7§lXxJooseeDARKNET§7 - §e§l8'/3640, l='MpServer', x=-40.50, y=71.09, z=3.50], EntityArmorStand['§6§lClick to toggle!'/3642, l='MpServer', x=-40.50, y=70.66, z=3.50], EntityArmorStand['§a§lLifetime §r§7Daily'/3644, l='MpServer', x=-40.50, y=70.28, z=3.50], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=-21.06, y=72.00, z=-2.38], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=-34.50, y=72.00, z=0.50], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=7.51, y=72.61, z=-0.51], EntityArmorStand['§e4. §abadpvper1§r§2 [BOUND]§7 - §e670'/3686, l='MpServer', x=-40.50, y=73.19, z=-2.50], EntityArmorStand['§e5. §6Zyker1337§7 - §e626'/3688, l='MpServer', x=-40.50, y=72.81, z=-2.50], EntityArmorStand['§e6. §bAkatskiPain§7 - §e580'/3690, l='MpServer', x=-40.50, y=72.44, z=-2.50], EntityArmorStand['§e7. §6ilyizzy§r§6 [XENO]§7 - §e580'/3692, l='MpServer', x=-40.50, y=72.06, z=-2.50], EntityArmorStand['§e8. §aCagoemit§r§3 [CLIMB]§7 - §e556'/3694, l='MpServer', x=-40.50, y=71.72, z=-2.50], EntityArmorStand['§e9. §bDigestings§r§7 [SENOR]§7 - §e516'/3696, l='MpServer', x=-40.50, y=71.34, z=-2.50], EntityArmorStand['§e10. §6THROWERMANSHLUNK§r§3 [BRAIN]§7 - §e502'/3698, l='MpServer', x=-40.50, y=70.97, z=-2.50], EntityArmorStand['§e§l1,857. §7§lXxJooseeDARKNET§7 - §e§l22'/3700, l='MpServer', x=-40.50, y=70.59, z=-2.50], EntityOtherPlayerMP['GiovannyCool1'/3701, l='MpServer', x=10.64, y=84.55, z=0.34], EntityOtherPlayerMP['VoicBoi'/3702, l='MpServer', x=7.51, y=72.61, z=-0.51], EntityFishHook['unknown'/3832, l='MpServer', x=5.63, y=72.43, z=-0.51], EntityArmorStand['Armor Stand'/3836, l='MpServer', x=10.59, y=72.28, z=0.28]]
+	Retry entities: 0 total; []
+	Server brand: Hypixel BungeeCord (1.0.5) <- vanilla
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.func_72914_a(WorldClient.java:420)
+	at net.minecraft.client.Minecraft.func_71396_d(Minecraft.java:2741)
+	at net.minecraft.client.Minecraft.func_99999_d(Minecraft.java:427)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.multimc.onesix.OneSixLauncher.launchWithMainClass(OneSixLauncher.java:196)
+	at org.multimc.onesix.OneSixLauncher.launch(OneSixLauncher.java:231)
+	at org.multimc.EntryPoint.listen(EntryPoint.java:143)
+	at org.multimc.EntryPoint.main(EntryPoint.java:34)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_271, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 2375554024 bytes (2265 MB) / 3391094784 bytes (3234 MB) up to 3817865216 bytes (3641 MB)
+	LiteLoader Brand: 1.12.2-SNAPSHOT-r4CC2BB0-b4-4
+	LiteLoader Mods: 1 loaded mod(s)
+          - Macro / Keybind Mod version 0.15.4
+	LaunchWrapper: 25 active transformer(s)
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.PatchingTransformer
+          - Transformer: org.spongepowered.asm.mixin.transformer.Proxy
+          - Transformer: com.mumfrey.liteloader.transformers.event.EventProxyTransformer
+          - Transformer: com.mumfrey.liteloader.launch.LiteLoaderTransformer
+          - Transformer: com.mumfrey.liteloader.client.transformers.CrashReportTransformer
+          - Transformer: org.spongepowered.asm.mixin.transformer.Proxy
+          - Transformer: $wrapper.net.minecraftforge.fml.common.asm.transformers.SideTransformer
+          - Transformer: $wrapper.net.minecraftforge.fml.common.asm.transformers.EventSubscriptionTransformer
+          - Transformer: $wrapper.net.minecraftforge.fml.common.asm.transformers.EventSubscriberTransformer
+          - Transformer: $wrapper.net.minecraftforge.fml.common.asm.transformers.SoundEngineFixTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.DeobfuscationTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.AccessTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.ModAccessTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.ItemStackTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.ItemBlockTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.ItemBlockSpecialTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.PotionEffectTransformer
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.TerminalTransformer
+          - Transformer: org.spongepowered.asm.mixin.transformer.Proxy
+          - Transformer: com.mumfrey.liteloader.transformers.event.EventTransformer
+          - Transformer: com.mumfrey.liteloader.common.transformers.LiteLoaderPacketTransformer
+          - Transformer: net.eq2online.macros.input.InputHandlerInjector
+          - Transformer: com.mumfrey.liteloader.transformers.event.json.ModEventInjectionTransformer
+          - Transformer: org.spongepowered.asm.mixin.transformer.Proxy
+          - Transformer: net.minecraftforge.fml.common.asm.transformers.ModAPITransformer
+	JVM Flags: 3 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -Xms1024m -Xmx4096m
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2854 5 mods loaded, 5 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                  | Version        | Source                                  | Signature                                |
+	|:------ |:------------------- |:-------------- |:--------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft           | 1.12.2         | minecraft.jar                           | None                                     |
+	| LCHIJA | mcp                 | 9.42           | minecraft.jar                           | None                                     |
+	| LCHIJA | FML                 | 8.0.99.99      | forge-1.12.2-14.23.5.2854-universal.jar | e3c3d50c7c986df74c645c0ac54639741c90a557 |
+	| LCHIJA | forge               | 14.23.5.2854   | forge-1.12.2-14.23.5.2854-universal.jar | e3c3d50c7c986df74c645c0ac54639741c90a557 |
+	| LCHIJA | perspectivemodredux | GRADLE:VERSION | perspectivemodredux-1.12.2-0.0.1.jar    | None                                     |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 457.51' Renderer: 'GeForce RTX 2060 SUPER/PCIe/SSE2'
+	Launched Version: MultiMC5
+	LWJGL: 2.9.4
+	OpenGL: GeForce RTX 2060 SUPER/PCIe/SSE2 GL version 4.6.0 NVIDIA 457.51, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge,LiteLoader'
+	Type: Client (map_client.txt)
+	Resource Packs: X PVP Pack.zip (incompatible)
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 16x AMD Ryzen 7 2700 Eight-Core Processor 
