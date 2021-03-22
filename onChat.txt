@@ -1,0 +1,189 @@
+$${
+ifcontains(%CHATCLEAN%,"Damage dealt");
+	keyup(jump);
+	keyup(forward);
+	keyup(left);
+	keyup(right);
+	keyup(back);
+	stop(all);
+	echo(gg);
+	wait(50ms);
+	echo(/play duels_classic_duel);
+	stop;
+endif;
+ifcontains(%CHATCLEAN%,"Eliminate your opponents");
+	popupmessage("Match Found!",true);
+	exec("pvpbot.txt","pvp")
+    exec("addons.txt","addon")
+    exec("hit.txt","hit")
+    exec("antifire.txt","A-F")
+    exec("movement.txt","movement")
+    wait(1t)
+	stop;
+endif;
+
+
+
+ifcontains(%CHATCLEAN%,"%PLAYER% WINNER");
+	inc(@#streak,1)
+	@&webhook_messagewin = "{'content': null,'embeds': [{'title': 'Win','description': 'Opponent: %@&opponent%\nWinstreak: %@#streak%','color': 1376000}]}"
+	setrequestheader("Content-Type","application/json");
+    setrequestheader("User-Agent","USER: %UUID%");
+	    &webhook_message = regexreplace(@&webhook_messagewin,"'","\"");
+	    &response_data[]  = httppost(%@&webhook_url%,%&webhook_message%,#response_code);
+	    #response_size    = arraysize(&response_data[]);
+	    if(%#response_code% == 204);
+	        log("&8[&7Webhook&8] &f> &aSuccess!");
+	    elseif(%response_code% == -1);
+	       log("&8[&7Webhook&8] &f> &c&lFailed!");
+	    endif;
+	    foreach(&response_data[],&response_line,#response_index);
+	      log("&8[&7Webhook&8] &f> &c&lFailed!");
+	    next;
+	    log(" ");
+		endif;
+		next;
+			&url        = "https://api.hypixel.net/player?key=%@&api%&name=%PLAYER%";
+			&response   = httpget(%&url%,,,#response_code);
+			&status     = jsonget(%&response%,"success");
+			if(&status == "true"); 
+			    &player = jsonget(%&response%,"player");
+			    &stats = jsonget(%&player%,"stats");
+			    &duels = jsonget(%&stats%,"Duels");
+			    &classic_wins = jsonget(%&duels%,"classic_duel_wins");
+			    &classic_losses = jsonget(%&duels%,"classic_duel_losses");
+			endif;
+
+			set(@#classic_wins,%&classic_wins%);
+			set(@#classic_losses,%&classic_losses%);
+			eval(@&kd,"%@#classic_wins%/%@#classic_losses%");
+			stop;
+endif;
+
+
+ifcontains(%CHATCLEAN%,"%@&opponent% W");
+	@#streak = 0
+	@&webhook_messageloss = "{'content': null,'embeds': [{'title': 'Loss','description': 'Opponent: %@&opponent%','color': 16711680}]}"
+		setrequestheader("Content-Type","application/json");
+	    setrequestheader("User-Agent","USER: %UUID%");
+
+	    &webhook_message = regexreplace(@&webhook_messageloss,"'","\"");
+	    &response_data[]  = httppost(%@&webhook_url%,%&webhook_message%,#response_code);
+	    #response_size    = arraysize(&response_data[]);
+	    if(%#response_code% == 204);
+	        log("&8[&7Webhook&8] &f> &aSuccess!");
+	    elseif(%response_code% == -1);
+	       log("&8[&7Webhook&8] &f> &c&lFailed!");
+	    endif;
+	    foreach(&response_data[],&response_line,#response_index);
+	      log("&8[&7Webhook&8] &f> &c&lFailed!");
+	    next;
+	    log(" ");
+		endif;
+		next;
+			&url        = "https://api.hypixel.net/player?key=%@&api%&name=%PLAYER%";
+			&response   = httpget(%&url%,,,#response_code);
+			&status     = jsonget(%&response%,"success");
+			if(&status == "true"); 
+			    &player = jsonget(%&response%,"player");
+			    &stats = jsonget(%&player%,"stats");
+			    &duels = jsonget(%&stats%,"Duels");
+			    &classic_wins = jsonget(%&duels%,"classic_duel_wins");
+			    &classic_losses = jsonget(%&duels%,"classic_duel_losses");
+			endif;
+
+			set(@#classic_wins,%&classic_wins%);
+			set(@#classic_losses,%&classic_losses%);
+			eval(@&kd,"%@#classic_wins%/%@#classic_losses%");
+			stop;
+endif;
+
+ifcontains(%CHATCLEAN%,"You are AFK. Move around to return from AFK.");
+  log("&8[&7&ka&2Server&7&ka&8] &7You are AFK!");
+  wait(5);
+  echo(/lobby);
+  look(0,50,0.2);
+  key(attack);
+  wait(1);
+	stop(all);
+  exec(start.txt);
+  stop;
+endif;
+
+
+ifcontains(%CHATCLEAN%,"Spam the command");
+    wait(6);
+    echo(/play duels_classic_duel);
+    stop(all);
+    stop;
+endif;
+
+
+
+
+/// ---------------------
+
+
+
+ifcontains(%CHATCLEAN%,"(2/2)");
+	wait(50ms);
+		#ready = 0;
+	    foreach(players)
+	    if(%PLAYERNAME% != %PLAYER%);
+	        @&opponent = %PLAYERNAME%;
+	        log(Opponent is %@&opponent%);
+	        #ready = 1;
+	    endif;
+	    if(#ready = 1);
+			&url        = "https://api.hypixel.net/player?key=%@&api%&name=%@&opponent%";
+			&response   = httpget(%&url%,,,#response_code);
+			&status     = jsonget(%&response%,"success");
+			if(&status == "true"); 
+			    &player = jsonget(%&response%,"player");
+			    &stats = jsonget(%&player%,"stats");
+			    &duels = jsonget(%&stats%,"Duels");
+			    &kills    = jsonget(%&duels%,"kills");
+			    &wins = jsonget(%&duels%,"wins");
+			    &deaths = jsonget(%&duels%,"deaths");
+			    &winstreak = jsonget(%&duels%,"current_winstreak");
+			    &classic_winstreak   = jsonget(%&duels%,"current_classic_winstreak");
+			    &best_classic_winstreak   = jsonget(%&duels%,"best_classic_winstreak");
+			    &classic_wins = jsonget(%&duels%,"classic_duel_wins");
+			    &classic_losses = jsonget(%&duels%,"classic_duel_losses");
+
+			endif;
+			set(@#classic_wins,%&classic_wins%);
+			set(@#classic_losses,%&classic_losses%);
+			set(#kills,%&kills%);
+			set(#deaths,%&deaths%);
+			set(#winstreak,%&winstreak%);
+			set(#best_classic_winstreak,%&best_classic_winstreak%);
+			log(%#kills% > %#deaths%);
+			if(@&opponent = "socialtesty");
+				stop();
+			endif;
+			if(@#classic_wins>@#classic_losses);
+				wait(50ms);
+				echo(/lobby);
+				slot(4);
+				log(&c&lGood Player . . .);
+				log(&f&lSwitching Lobbies . . .);
+				exec("start.txt","start");
+				stop;
+			elseif((#deaths = 0)&&(#kills = 0));
+				wait(50ms);
+				echo(/lobby);
+				log(&c&lWatchdog found! Cant get Opponent's stats);
+				exec("start.txt","start");
+				stop;
+			else;
+				log(&a&lNoob Found!);
+				stop();
+			endif;
+		endif;
+	 next;
+endif;
+
+
+
+}$$

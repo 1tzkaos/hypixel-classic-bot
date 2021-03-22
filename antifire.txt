@@ -1,0 +1,92 @@
+unsafe
+do()
+for(#radix,-1,1);
+    for(#radiz,-1,1);
+            #xpos = %XPOS%+%#radix%
+            #zpos = %ZPOS%+%#radiz%
+            getid(%#xpos%,%YPOS%,%#zpos%,&id,,);
+            if(&id = "fire")
+                stop(pvp)
+                stop(addon)
+                stop(hit)
+                stop(movement)
+                keyup(jump)
+                keyup(forward)
+                keyup(back)
+                keyup(left)
+                keyup(right)
+                do()
+
+                    getidrel(-1,0,0,@&west,,);
+                    getidrel(+1,0,0,@&east,,);
+                    getidrel(0,0,-1,@&north,,);
+                    getidrel(0,0,+1,@&south,,);
+
+                    getidrel(+1,0,+1,@&southeast,,);
+                    getidrel(-1,0,+1,@&southwest,,);
+                    getidrel(-1,0,-1,@&northwest,,);
+                    getidrel(+1,0,-1,@&northeast,,);
+                    getidrel(0,0,0,@&below,,);  
+
+
+
+                            if(@&below == "fire")
+                                look(90,90)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&north% == "fire")
+                                look(0,60)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&south% == "fire")
+                                look(180,60)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&east% == "fire")
+                                look(90,60)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&west% == "fire")
+                                look(270,60)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&southwest% == "fire")
+                                look(225,50)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&southeast% == "fire")
+                                look(135,50)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&northwest% == "fire")
+                                look(315,50)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            elseif(%@&northeast% == "fire")
+                                look(45,50)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                until((@&west != "fire")&&(@&east != "fire")&&(@&below != "fire")&&(@&north != "fire")&&(@&south != "fire")&&(@&southwest != "fire")&&(@&southeast != "fire")&&(@&northwest != "fire")&&(@&northeast != "fire"))
+                    keydown(forward)
+                    keydown(sprint)
+                    exec("pvpbot.txt","pvp")
+                    exec("addons.txt","addon")
+                    exec("hit.txt","hit")
+                    exec("movement.txt","movement")
+            endif
+    next
+next;
+loop
+endunsafe
+
+

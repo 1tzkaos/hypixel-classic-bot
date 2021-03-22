@@ -1,0 +1,92 @@
+
+
+unsafe
+do()
+	//getid(0,70,27,&idvar,,);
+    getidrel(-1,0,0,@&west,,);
+    getidrel(+1,0,0,@&east,,);
+    getidrel(0,0,-1,@&north,,);
+    getidrel(0,0,+1,@&south,,);
+
+    getidrel(+1,0,+1,@&southeast,,);
+    getidrel(-1,0,+1,@&southwest,,);
+    getidrel(-1,0,-1,@&northwest,,);
+    getidrel(+1,0,-1,@&northeast,,);
+    getidrel(0,0,0,@&below,,);  
+
+
+
+
+// ---------------- //
+// Auto fishing rod // 
+// ---------------- //
+
+if((@#distancefrom >= 4)&&(@#distancefrom <= 6))
+	stop(hit)
+	keyup(back)
+	keyup(sneak)
+	keydown(forward)
+
+	do()		
+		pick(fishing_rod)
+		key(use)
+		wait(5t)
+		slot(1)
+		wait(400ms)
+	until((%HITID% = -1)||(@#distancefrom < 4)||(@#distancefrom > 8))
+	exec("hit.txt","hit")
+	slot(1)
+endif
+
+if((@#distancefrom >= 7)&&(@#distancefrom <= 15))
+	stop(hit)
+	pick(bow)
+	@#mode = 1
+		do();
+			key(use)
+			if((HITID = -1)||(@#distancefrom < 7))
+				break;
+			endif
+		until(%BOWCHARGE% = 100)
+		keydown(jump)
+		wait(1t)
+		keyup(jump)
+		@#mode = 0
+	pick(iron_sword)
+	exec("hit.txt","hit")
+endif
+
+if(@#distancefrom > 7)
+	keydown(forward)
+	keydown(sprint)
+	keydown(jump)
+	do()
+		keyup(back)
+		keyup(left)
+		keyup(right)
+		stop(movement)
+	until(@#distancefrom < 7)
+	keyup(jump)
+	exec("movement.txt","movement")
+endif;
+
+if(@&item = "bow")
+	stop(movement)
+	do()
+		random(#strafe,1000,500);
+		keydown(left)
+		wait(%#strafe%ms)
+		keyup(left)
+		keydown(right)
+		wait(%#strafe%ms)
+		keyup(right)
+		keyup(back)
+		keydown(sprint)
+	until(@&item != "bow")
+	keyup(left)
+	keyup(right)
+	exec("movement.txt","movement")
+endif
+
+loop
+endunsafe

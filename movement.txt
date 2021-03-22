@@ -1,0 +1,20 @@
+
+unsafe();
+do()
+
+Look(%@#yaw%,%@#pitch%)
+	//look(%@#yaw%,)
+	//look(,%@#pitch%,0.1)
+		
+			random(#strafe,1000,500);
+			keydown(left)
+			wait(%#strafe%ms)
+			keyup(left)
+			keydown(right)
+			wait(%#strafe%ms)
+			keyup(right)
+			keyup(back)
+			keydown(sprint)
+
+loop
+endunsafe;

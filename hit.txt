@@ -1,0 +1,20 @@
+
+do()
+
+random(#hittime,85,40);
+random(#idlehit,500,200)
+	if((%HITID% = -1)||(@#distancefrom <= 3))
+		pick(iron_sword)
+		do()
+			keyup(forward)
+			keydown(back)
+		until(@#distancefrom >= 3)
+			keyup(back)
+			keydown(forward)
+			keydown(sprint)
+	else
+		key(attack)
+		wait(%#idlehit%ms)
+		keydown(forward)
+	endif;
+loop;

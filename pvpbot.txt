@@ -1,0 +1,47 @@
+
+
+
+unsafe;
+
+
+
+setlabel(LABEL 258,Hack mode: Not Active);
+foreach(players)
+    if(%PLAYERNAME% != %PLAYER%)
+        @&opponent = %PLAYERNAME%
+        if(@&opponent = "socialtesty")
+            exec("skipper.txt","skipper")
+            stop
+        endif
+        popupmessage("Opponent is %@&opponent%",true);
+    endif
+    next
+do
+
+    foreach("entities(filter:[{extends:OtherPlayerMP}])");
+        
+        ifmatches(%ENTITYNAME%,"%@&opponent%")
+
+                if(%YPOS% >= %ENTITYYPOS%)
+                    @#entityypos = %ENTITYYPOS%+1
+                elseif(YPOS < %ENTITYYPOS%);
+                    @#entityypos = %ENTITYYPOS%     
+                endif
+                    @#distancefrom = %ENTITYDISTANCE%
+                            @#oppohealth = %ENTITYHEALTH%
+                            @#yaw=%ENTITYYAWFROMPLAYER%
+                    calcyawto(%ENTITYXPOS%,%@#entityypos%,%ENTITYZPOS%,,,@#pitch);
+                look(%@#yaw%,%@#pitch%)
+            #ypos=%ENTITYYPOS%
+            @&item = %ENTITYMAINHANDNAME%
+
+            
+            break()
+
+            endif
+
+        endif
+    next
+endunsafe
+loop       
+

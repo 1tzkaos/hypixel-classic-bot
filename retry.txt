@@ -1,0 +1,42 @@
+		clearchat();
+		#ready = 0
+	    foreach(players)
+	    if(%PLAYERNAME% != %PLAYER%)
+	    	#ready = 0
+	        @&opponent = %PLAYERNAME%
+	        log(Opponent is %@&opponent%)
+	        #ready = 1
+	    endif
+	    if(#ready = 1)
+			&url        = "https://api.hypixel.net/player?key=4e968874-ed5b-4363-985d-8968401cc7ed&name=%@&opponent%";
+			&response   = httpget(%&url%,,,#response_code);
+			&status     = jsonget(%&response%,"success");
+			if(&status == "true"); 
+			    &player = jsonget(%&response%,"player");
+			    &stats = jsonget(%&player%,"stats");
+			    &duels = jsonget(%&stats%,"Duels");
+			    &kills    = jsonget(%&duels%,"kills");
+			    &wins = jsonget(%&duels%,"wins");
+			    &deaths = jsonget(%&duels%,"deaths");
+			    &winstreak = jsonget(%&duels%,"current_winstreak");
+			    &classic_winstreak   = jsonget(%&duels%,"current_classic_winstreak");
+			    &best_classic_winstreak   = jsonget(%&duels%,"best_classic_winstreak");
+			endif;
+			set(#kills,%&kills%);
+			set(#deaths,%&deaths%);
+			set(#winstreak,%&winstreak%)
+			set(#best_classic_winstreak,%&best_classic_winstreak%)
+			log(%#kills% > %#deaths%)
+
+			if(#kills>#deaths)
+				echo(/l)
+				log(Good Player . . .)
+				log(Switching Lobbies . . .)
+				exec("skipper.txt","skipper")
+				stop
+			else
+				log(Noob Found!)
+				stop(all)
+			endif
+		endif
+	 next

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gui xmlns:gb="http://eq2online.net/macros/guibinding" xmlns:gc="http://eq2online.net/macros/guiconfiguration">
+    <!-- GUI slot bindings -->
+    <gb:bindings>
+        <gb:binding bottom="0" left="0" right="0" slot="inchat" top="0">inchat</gb:binding>
+        <gb:binding bottom="0" left="0" right="0" slot="playback" top="0">GUI</gb:binding>
+        <gb:binding bottom="0" left="0" right="0" slot="scoreboard" top="0">ingame</gb:binding>
+        <gb:binding bottom="35" left="2" right="2" slot="ingame" top="14">default</gb:binding>
+        <gb:binding bottom="0" left="0" right="0" slot="indebug" top="0">ingame</gb:binding>
+    </gb:bindings>
+    <!-- Config for layout 'default' -->
+    <gc:guilayout columns="32" display="Cane" dots="false" grid="false" name="default" padding="2" rows="32">
+        <gc:controls>
+            <gc:label colspan="3" id="257" name="LABEL 257" rowspan="2" x="0" y="6">
+                <align>middle left</align>
+                <background>#01000000</background>
+                <binding>Wins: %@#classic_wins%\nLosses: %@#classic_losses%</binding>
+                <border>0</border>
+                <colour>#00FF00</colour>
+                <shadow>1</shadow>
+                <text>%%</text>
+                <visible>1</visible>
+            </gc:label>
+        </gc:controls>
+    </gc:guilayout>
+    <!-- Config for layout 'inchat' -->
+    <gc:guilayout columns="6" display="inchat" dots="false" grid="false" name="inchat" padding="2" rows="10">
+        <gc:controls/>
+    </gc:guilayout>
+    <!-- Config for layout 'GUI' -->
+    <gc:guilayout columns="32" display="GUI" dots="false" grid="false" name="GUI" padding="2" rows="32">
+        <gc:metrics>
+            <gc:column id="31" width="10"/>
+        </gc:metrics>
+        <gc:controls>
+            <gc:button colspan="5" id="258" name="BUTTON 258" rowspan="2" x="10" y="12">
+                <background>#01000000</background>
+                <colour>#FFFB00</colour>
+                <hide>0</hide>
+                <hotkey>0</hotkey>
+                <sticky>0</sticky>
+                <text>API KEY</text>
+                <visible>1</visible>
+            </gc:button>
+            <gc:button colspan="5" id="259" name="BUTTON 259" rowspan="2" x="17" y="12">
+                <background>#01000000</background>
+                <colour>#FFFF00</colour>
+                <hide>0</hide>
+                <hotkey>0</hotkey>
+                <sticky>0</sticky>
+                <text>URL</text>
+                <visible>1</visible>
+            </gc:button>
+            <gc:label colspan="5" id="260" name="LABEL 260" x="0" y="28">
+                <align>top left</align>
+                <background>#01000000</background>
+                <binding>API: %@&amp;api%\n/nick: %@&amp;nick%</binding>
+                <border>0</border>
+                <colour>#FFFF00</colour>
+                <shadow>0</shadow>
+                <text>%%</text>
+                <visible>1</visible>
+            </gc:label>
+            <gc:button colspan="4" id="261" name="BUTTON 261" rowspan="2" x="14" y="9">
+                <background>#01000000</background>
+                <colour>#FFFF00</colour>
+                <hide>0</hide>
+                <hotkey>0</hotkey>
+                <sticky>0</sticky>
+                <text>Username</text>
+                <visible>1</visible>
+            </gc:button>
+            <gc:label colspan="32" id="262" name="LABEL 262" rowspan="2" x="0" y="0">
+                <align>middle centre</align>
+                <background>#01000000</background>
+                <binding/>
+                <border>0</border>
+                <colour>#FF0000</colour>
+                <shadow>1</shadow>
+                <text>Classic PVP Bot</text>
+                <visible>1</visible>
+            </gc:label>
+            <gc:label colspan="8" id="263" name="LABEL 263" rowspan="2" x="12" y="2">
+                <align>middle centre</align>
+                <background>#01000000</background>
+                <binding/>
+                <border>0</border>
+                <colour>#FF0000</colour>
+                <shadow>1</shadow>
+                <text>Custom made for Andrew</text>
+                <visible>1</visible>
+            </gc:label>
+        </gc:controls>
+    </gc:guilayout>
+    <!-- Config for layout 'ingame' -->
+    <gc:guilayout columns="2" display="ingame" dots="false" grid="false" name="ingame" padding="1" rows="4">
+        <gc:metrics>
+            <gc:column id="0" width="324"/>
+        </gc:metrics>
+        <gc:controls>
+            <gc:textarea id="256" name="debug" rowspan="4" x="1" y="0">
+                <colour>FF00FF00</colour>
+                <lifespan>200</lifespan>
+                <visible>1</visible>
+            </gc:textarea>
+        </gc:controls>
+    </gc:guilayout>
+</gui>

@@ -1,0 +1,4 @@
+log(&fStarting Classic PVP Bot as &6&l%PLAYER%)
+wait(5)
+echo(/play duels_classic_duel)
+
