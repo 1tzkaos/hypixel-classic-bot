@@ -13,7 +13,6 @@ Look(%@#yaw%,%@#pitch%)
 			keydown(right)
 			wait(%#strafe%ms)
 			keyup(right)
-			keyup(back)
 			keydown(sprint)
 
 loop

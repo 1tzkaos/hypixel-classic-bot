@@ -3,11 +3,6 @@ do()
 
 random(#hittime,85,40);
 random(#idlehit,500,200)
-	ifininv(arrow);
-		@#arrow = 1
-	else
-		@#arrows = 0
-	endif;	
 	if((%HITID% = -1)||(@#distancefrom <= 3))
 		pick(iron_sword)
 		do()
@@ -21,5 +16,10 @@ random(#idlehit,500,200)
 		key(attack)
 		wait(%#idlehit%ms)
 		keydown(forward)
+		ifininv(arrow);
+			@#arrow = 1
+		else
+			@#arrows = 0
+		endif;	
 	endif;
 loop;
