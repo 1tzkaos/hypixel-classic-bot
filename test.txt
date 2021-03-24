@@ -1,1 +1,3 @@
-achievementget(testing,BOW:0);
+ifininv(arrow);
+	@#arrow = 1
+endif;

@@ -2,20 +2,14 @@
 
 unsafe
 do()
-	//getid(0,70,27,&idvar,,);
-    getidrel(-1,0,0,@&west,,);
-    getidrel(+1,0,0,@&east,,);
-    getidrel(0,0,-1,@&north,,);
-    getidrel(0,0,+1,@&south,,);
-
-    getidrel(+1,0,+1,@&southeast,,);
-    getidrel(-1,0,+1,@&southwest,,);
-    getidrel(-1,0,-1,@&northwest,,);
-    getidrel(+1,0,-1,@&northeast,,);
-    getidrel(0,0,0,@&below,,);  
 
 
 
+ifininv(arrow);
+	@#arrow = 1
+else
+	@#arrows = 0
+endif;
 
 // ---------------- //
 // Auto fishing rod // 
@@ -38,15 +32,16 @@ if((@#distancefrom >= 4)&&(@#distancefrom <= 6))
 	slot(1)
 endif
 
-if((@#distancefrom >= 7)&&(@#distancefrom <= 15))
+if((@#distancefrom >= 7)&&(@#distancefrom <= 15)&&(@#arrow = 1))
 	stop(hit)
 	pick(bow)
-	@#mode = 1
+	@#mode = 1	
 		do();
-			key(use)
-			if((HITID = -1)||(@#distancefrom < 7))
+			key(use)	
+			if((HITID = -1)||(@#distancefrom < 7)||(@#arrow = 0))
 				break;
 			endif
+
 		until(%BOWCHARGE% = 100)
 		keydown(jump)
 		wait(1t)

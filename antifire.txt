@@ -1,11 +1,11 @@
 unsafe
 do()
-for(#radix,-1,1);
-    for(#radiz,-1,1);
+for(#radix,-2,2);
+    for(#radiz,-2,2);
             #xpos = %XPOS%+%#radix%
             #zpos = %ZPOS%+%#radiz%
             getid(%#xpos%,%YPOS%,%#zpos%,&id,,);
-            if(&id = "fire")
+            if(&id != "air")
                 stop(pvp)
                 stop(addon)
                 stop(hit)
@@ -17,61 +17,167 @@ for(#radix,-1,1);
                 keyup(right)
                 do()
 
+                    // Sides
                     getidrel(-1,0,0,@&west,,);
                     getidrel(+1,0,0,@&east,,);
                     getidrel(0,0,-1,@&north,,);
                     getidrel(0,0,+1,@&south,,);
-
+                    
+                    // Diagonal 
                     getidrel(+1,0,+1,@&southeast,,);
                     getidrel(-1,0,+1,@&southwest,,);
                     getidrel(-1,0,-1,@&northwest,,);
                     getidrel(+1,0,-1,@&northeast,,);
                     getidrel(0,0,0,@&below,,);  
 
+                    // 2 block reach
+                    // Sides
+                    getidrel(+2,0,0,@&east2,,);
+                    getidrel(0,0,-2,@&north2,,);
+                    getidrel(-2,0,0,@&west2,,);
+                    getidrel(0,0,+2,@&south2,,);
+
+                    // Diagonal
+
+                    getidrel(-1,0,+2,@&south3,,);
+                    getidrel(+1,0,+2,@&south4,,);    
+                    getidrel(+2,0,+1,@&east3,,);   
+                    getidrel(+2,0,-1,@&east4,,);   
+                    getidrel(-1,0,-2,@&north3,,);
+                    getidrel(+1,0,-2,@&north4,,);   
+                    getidrel(-2,0,-1,@&west3,,);
+                    getidrel(-2,0,+1,@&west4,,);  
 
 
+
+                    //Fire Breaking 
+                     
+
+                            // 1 block range
                             if(@&below == "fire")
                                 look(90,90)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&north% == "fire")
+                            endif
+                            if(%@&north% == "fire")
                                 look(0,60)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&south% == "fire")
+                            endif
+                            if(%@&south% == "fire")
                                 look(180,60)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&east% == "fire")
+                            endif
+                            if(%@&east% == "fire")
                                 look(90,60)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&west% == "fire")
+                            endif
+                            if(%@&west% == "fire")
                                 look(270,60)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&southwest% == "fire")
+                            endif
+                            if(%@&southwest% == "fire")
                                 look(225,50)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&southeast% == "fire")
+                            endif
+                            if(%@&southeast% == "fire")
                                 look(135,50)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&northwest% == "fire")
+                            endif
+                            if(%@&northwest% == "fire")
                                 look(315,50)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)
-                            elseif(%@&northeast% == "fire")
+                            endif
+                            if(%@&northeast% == "fire")
                                 look(45,50)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            // 2 Block range Sides
+                            if(@&south2 == "fire")
+                                look(180,40)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif   
+                            if(@&north2 == "fire")
+                                look(0,40)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&east2 == "fire")
+                                look(90,40)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&west2 == "fire")
+                                look(270,40)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            // 2 block range Diagonal
+                            if(@&south3 == "fire")
+                                look(207,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&south4 == "fire")
+                                look(153,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&east3 == "fire")
+                                look(116,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&east4 == "fire")
+                                look(63,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&north4 == "fire")
+                                look(25,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&north3 == "fire")
+                                look(330,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&west3 == "fire")
+                                look(296,36)
+                                pick(air)
+                                key(attack)
+                                pick(iron_sword)
+                            endif
+                            if(@&west4 == "fire")
+                                look(242,36)
                                 pick(air)
                                 key(attack)
                                 pick(iron_sword)

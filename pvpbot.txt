@@ -1,11 +1,9 @@
-
+look(+0,+0)
 
 
 unsafe;
 
 
-
-setlabel(LABEL 258,Hack mode: Not Active);
 foreach(players)
     if(%PLAYERNAME% != %PLAYER%)
         @&opponent = %PLAYERNAME%
@@ -16,7 +14,7 @@ foreach(players)
         popupmessage("Opponent is %@&opponent%",true);
     endif
     next
-do
+do()
 
     foreach("entities(filter:[{extends:OtherPlayerMP}])");
         
@@ -35,13 +33,13 @@ do
             #ypos=%ENTITYYPOS%
             @&item = %ENTITYMAINHANDNAME%
 
-            
             break()
 
             endif
 
         endif
     next
-endunsafe
-loop       
+
+endunsafe   
+loop
 

@@ -13,6 +13,7 @@ ifcontains(%CHATCLEAN%,"Damage dealt");
 endif;
 ifcontains(%CHATCLEAN%,"Eliminate your opponents");
 	popupmessage("Match Found!",true);
+	// Execute files
 	exec("pvpbot.txt","pvp")
     exec("addons.txt","addon")
     exec("hit.txt","hit")
@@ -98,7 +99,7 @@ ifcontains(%CHATCLEAN%,"%@&opponent% W");
 			stop;
 endif;
 
-ifcontains(%CHATCLEAN%,"You are AFK. Move around to return from AFK.");
+ifcontains(%CHATCLEAN%,"You are AFK");
   log("&8[&7&ka&2Server&7&ka&8] &7You are AFK!");
   wait(5);
   echo(/lobby);

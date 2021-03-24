@@ -258,7 +258,7 @@ Macro[13].Macro=$${stop(all)}$$
 Macro[200].Macro=$${$$<start.txt>}$$
 
 # KEY_LEFT
-Macro[203].Macro=$${$$<test2.txt>}$$
+Macro[203].Macro=$${$$<antifire.txt>}$$
 
 # KEY_RIGHT
 Macro[205].Macro=$${$$<slayerwebhook.txt>}$$
